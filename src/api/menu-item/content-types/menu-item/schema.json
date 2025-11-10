@@ -1,15 +1,19 @@
 {
   "kind": "collectionType",
-  "collectionName": "menus",
+  "collectionName": "menu_items",
   "info": {
-    "singularName": "menu",
-    "pluralName": "menus",
-    "displayName": "Menu"
+    "singularName": "menu-item",
+    "pluralName": "menu-items",
+    "displayName": "menu-items"
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
   "attributes": {
     "name": {
       "type": "string",
@@ -35,16 +39,8 @@
     "category": {
       "type": "enumeration",
       "enum": [
-        "Pizzas",
-        "Philly Steaks",
-        "Subs",
-        "Pasta",
-        "Chicken",
-        "Burgers",
-        "Gyro",
-        "Salads",
-        "Seafood",
-        "Drinks & Desserts"
+        "Pizza",
+        "Philly Stakes"
       ]
     }
   }

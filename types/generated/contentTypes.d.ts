@@ -430,38 +430,33 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiMenuMenu extends Struct.CollectionTypeSchema {
-  collectionName: 'menus';
+export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
+  collectionName: 'menu_items';
   info: {
-    displayName: 'Menu';
-    pluralName: 'menus';
-    singularName: 'menu';
+    displayName: 'menu-items';
+    pluralName: 'menu-items';
+    singularName: 'menu-item';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: false;
+    };
+  };
   attributes: {
-    category: Schema.Attribute.Enumeration<
-      [
-        'Pizzas',
-        'Philly Steaks',
-        'Subs',
-        'Pasta',
-        'Chicken',
-        'Burgers',
-        'Gyro',
-        'Salads',
-        'Seafood',
-        'Drinks & Desserts',
-      ]
-    >;
+    category: Schema.Attribute.Enumeration<['Pizza', 'Philly Stakes']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::menu.menu'> &
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::menu-item.menu-item'
+    > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
@@ -982,7 +977,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::menu.menu': ApiMenuMenu;
+      'api::menu-item.menu-item': ApiMenuItemMenuItem;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
